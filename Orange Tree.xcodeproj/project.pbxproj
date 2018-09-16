@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E546F0A5214E0A6A002FB5E7 /* Orange.swift in Sources */ = {isa = PBXBuildFile; fileRef = E546F0A4214E0A6A002FB5E7 /* Orange.swift */; };
+		E546F0A7214E1CA3002FB5E7 /* Level-2.sks in Resources */ = {isa = PBXBuildFile; fileRef = E546F0A6214E1CA3002FB5E7 /* Level-2.sks */; };
 		E5C8C6BA214C4F7500326743 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C8C6B9214C4F7500326743 /* AppDelegate.swift */; };
-		E5C8C6BC214C4F7500326743 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = E5C8C6BB214C4F7500326743 /* GameScene.sks */; };
+		E5C8C6BC214C4F7500326743 /* Level-1.sks in Resources */ = {isa = PBXBuildFile; fileRef = E5C8C6BB214C4F7500326743 /* Level-1.sks */; };
 		E5C8C6C0214C4F7500326743 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C8C6BF214C4F7500326743 /* GameScene.swift */; };
 		E5C8C6C2214C4F7500326743 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C8C6C1214C4F7500326743 /* GameViewController.swift */; };
 		E5C8C6C5214C4F7500326743 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5C8C6C3214C4F7500326743 /* Main.storyboard */; };
@@ -18,9 +20,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E546F0A4214E0A6A002FB5E7 /* Orange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Orange.swift; sourceTree = "<group>"; };
+		E546F0A6214E1CA3002FB5E7 /* Level-2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Level-2.sks"; sourceTree = "<group>"; };
 		E5C8C6B6214C4F7500326743 /* Orange Tree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Orange Tree.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5C8C6B9214C4F7500326743 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E5C8C6BB214C4F7500326743 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		E5C8C6BB214C4F7500326743 /* Level-1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Level-1.sks"; sourceTree = "<group>"; };
 		E5C8C6BF214C4F7500326743 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		E5C8C6C1214C4F7500326743 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		E5C8C6C4214C4F7500326743 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -62,9 +66,11 @@
 			children = (
 				E5C8C6D1214C4FC700326743 /* assets.atlas */,
 				E5C8C6B9214C4F7500326743 /* AppDelegate.swift */,
-				E5C8C6BB214C4F7500326743 /* GameScene.sks */,
+				E5C8C6BB214C4F7500326743 /* Level-1.sks */,
+				E546F0A6214E1CA3002FB5E7 /* Level-2.sks */,
 				E5C8C6BF214C4F7500326743 /* GameScene.swift */,
 				E5C8C6C1214C4F7500326743 /* GameViewController.swift */,
+				E546F0A4214E0A6A002FB5E7 /* Orange.swift */,
 				E5C8C6C3214C4F7500326743 /* Main.storyboard */,
 				E5C8C6C6214C4F7900326743 /* Assets.xcassets */,
 				E5C8C6C8214C4F7900326743 /* LaunchScreen.storyboard */,
@@ -133,7 +139,8 @@
 			files = (
 				E5C8C6D2214C4FC800326743 /* assets.atlas in Resources */,
 				E5C8C6C5214C4F7500326743 /* Main.storyboard in Resources */,
-				E5C8C6BC214C4F7500326743 /* GameScene.sks in Resources */,
+				E5C8C6BC214C4F7500326743 /* Level-1.sks in Resources */,
+				E546F0A7214E1CA3002FB5E7 /* Level-2.sks in Resources */,
 				E5C8C6C7214C4F7900326743 /* Assets.xcassets in Resources */,
 				E5C8C6CA214C4F7900326743 /* LaunchScreen.storyboard in Resources */,
 			);
@@ -149,6 +156,7 @@
 				E5C8C6C0214C4F7500326743 /* GameScene.swift in Sources */,
 				E5C8C6C2214C4F7500326743 /* GameViewController.swift in Sources */,
 				E5C8C6BA214C4F7500326743 /* AppDelegate.swift in Sources */,
+				E546F0A5214E0A6A002FB5E7 /* Orange.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
