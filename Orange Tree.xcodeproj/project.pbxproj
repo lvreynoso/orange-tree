@@ -18,6 +18,8 @@
 		E5C8C6C5214C4F7500326743 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5C8C6C3214C4F7500326743 /* Main.storyboard */; };
 		E5C8C6CA214C4F7900326743 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5C8C6C8214C4F7900326743 /* LaunchScreen.storyboard */; };
 		E5C8C6D2214C4FC800326743 /* assets.atlas in Resources */ = {isa = PBXBuildFile; fileRef = E5C8C6D1214C4FC700326743 /* assets.atlas */; };
+		E5E6927E2159AB9500573D44 /* SplashScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E6927D2159AB9500573D44 /* SplashScene.swift */; };
+		E5E692802159AC0100573D44 /* Splash.sks in Resources */ = {isa = PBXBuildFile; fileRef = E5E6927F2159AC0100573D44 /* Splash.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		E5C8C6C9214C4F7900326743 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E5C8C6CB214C4F7900326743 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5C8C6D1214C4FC700326743 /* assets.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = assets.atlas; sourceTree = "<group>"; };
+		E5E6927D2159AB9500573D44 /* SplashScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScene.swift; sourceTree = "<group>"; };
+		E5E6927F2159AC0100573D44 /* Splash.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Splash.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,11 +72,13 @@
 			children = (
 				E5C8C6D1214C4FC700326743 /* assets.atlas */,
 				E5C8C6B9214C4F7500326743 /* AppDelegate.swift */,
+				E5E6927F2159AC0100573D44 /* Splash.sks */,
 				E57E514E21588DF900E55279 /* Menu.sks */,
 				E5C8C6BB214C4F7500326743 /* Level-1.sks */,
 				E546F0A6214E1CA3002FB5E7 /* Level-2.sks */,
-				E5C8C6BF214C4F7500326743 /* GameScene.swift */,
+				E5E6927D2159AB9500573D44 /* SplashScene.swift */,
 				E57E515021588E6A00E55279 /* MenuScene.swift */,
+				E5C8C6BF214C4F7500326743 /* GameScene.swift */,
 				E5C8C6C1214C4F7500326743 /* GameViewController.swift */,
 				E546F0A4214E0A6A002FB5E7 /* Orange.swift */,
 				E5C8C6C3214C4F7500326743 /* Main.storyboard */,
@@ -142,6 +148,7 @@
 			files = (
 				E57E514F21588DF900E55279 /* Menu.sks in Resources */,
 				E5C8C6D2214C4FC800326743 /* assets.atlas in Resources */,
+				E5E692802159AC0100573D44 /* Splash.sks in Resources */,
 				E5C8C6C5214C4F7500326743 /* Main.storyboard in Resources */,
 				E5C8C6BC214C4F7500326743 /* Level-1.sks in Resources */,
 				E546F0A7214E1CA3002FB5E7 /* Level-2.sks in Resources */,
@@ -161,6 +168,7 @@
 				E57E515121588E6A00E55279 /* MenuScene.swift in Sources */,
 				E5C8C6BA214C4F7500326743 /* AppDelegate.swift in Sources */,
 				E546F0A5214E0A6A002FB5E7 /* Orange.swift in Sources */,
+				E5E6927E2159AB9500573D44 /* SplashScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
