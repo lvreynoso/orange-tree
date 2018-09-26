@@ -11,20 +11,35 @@ import GameplayKit
 
 class SplashScene: SKScene {
     
-    var anima = SKSpriteNode(imageNamed: "logo")
+    let anima: SKSpriteNode
     enum Phase {
         case fadeIn, pause, fadeOut
     }
     var phase: Phase?
     
+    init(visual: SKSpriteNode, size: CGSize) {
+        self.anima = visual
+        super.init(size: size)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func didMove(to view: SKView) {
+        // paint it black
+        self.backgroundColor = .black
+        
         // place the logo
+        // let logoTexture = SKTexture(imageNamed: "logo.png")
+        // anima = SKSpriteNode(texture: logoTexture)
+        anima.anchorPoint = CGPoint(x: 0, y: 0)
         anima.position = CGPoint(x: 0, y: 0)
         anima.alpha = 0
         
         // scale the logo properly
         let screenSize = self.size
-        let animaSize = anima.calculateAccumulatedFrame()
+        let animaSize = anima.calculateAccumulatedFrame() // ?? CGRect(x: 0, y: 0, width: 2048, height: 1334)
         let xScale = screenSize.width / animaSize.width
         let yScale = screenSize.height / animaSize.height
         if xScale >= yScale {
@@ -33,12 +48,20 @@ class SplashScene: SKScene {
             anima.setScale(yScale)
         }
         
+        // display logo
+        addChild(anima)
+        /*
+        if let logo = anima {
+            addChild(logo)
+        }
+        */
+        
         // set the fade in
         phase = .fadeIn
     }
     
     override func update(_ currentTime: TimeInterval) {
-        if let currentPhase = phase {
+        if let currentPhase = phase /*, let _ = anima?.alpha */ {
             switch currentPhase {
             case .fadeIn:
                 anima.alpha += 0.0167
