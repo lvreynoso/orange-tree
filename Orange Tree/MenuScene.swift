@@ -15,8 +15,9 @@ class MenuScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // touch to begin play!
         if let view = self.view {
-            // Load the SKScene from 'GameScene.sks'
+            // Load a game level via the GameScene class
             if let scene = GameScene(fileNamed: "Level-1") {
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill

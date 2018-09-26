@@ -10,16 +10,23 @@ import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene {
+    // initialize our properties
     var orangeTree: SKSpriteNode!
     var orange: Orange?
     var touchStart: CGPoint = .zero
     var shapeNode = SKShapeNode()
     var boundary = SKNode()
+    
+    // change to match the number of level SKS files
     var numOfLevels: Int = 2
+    
+    // start "paused"
     enum GameState {
         case run, pause, gameOver, win
     }
     var state: GameState = .pause
+    
+    // player supply of oranges
     var orangeSupply: Int = 7
     enum OrangeState {
         case none, ready, fire
@@ -65,13 +72,20 @@ class GameScene: SKScene {
         
         addChild(orangesLabel)
         
+        // start play!
         state = .run
     }
     
     override func update(_ currentTime: TimeInterval) {
+        // let the player know how many oranges they have left
         updateLabel()
+        
+        // check if there are skulls on the screen, and if stuff is moving. we don't want
+        // the player to see a game over screen if there are blocks and oranges still
+        // moving around that could hit a skull!
         var objectsAreMoving: Bool = false
         var skullsExist: Bool = false
+        // "//*" returns every child node for the scene
         self.enumerateChildNodes(withName: "//*") {
             node, _ in
             if let name = node.name {
@@ -79,17 +93,18 @@ class GameScene: SKScene {
                     skullsExist = true
                 }
             }
+            // we check if this child node is moving using our isMoving() function
             if self.isMoving(node) {
                 objectsAreMoving = true
             }
         }
+        // check our win condition
         if skullsExist == false && state == .run {
             win()
-            // return
         }
+        // check our lose condition
         if orangeSupply <= 0 && objectsAreMoving == false && state == .run {
             gameOver()
-            // return
         }
     }
     
@@ -112,7 +127,7 @@ class GameScene: SKScene {
                 //store the location of the touch
                 touchStart = location
             }
-            
+            // if player touches the sun, load a random level
             for node in nodes(at: location) {
                 if node.name == "sun" {
                     let n = Int.random(in: 1...numOfLevels)
@@ -125,15 +140,14 @@ class GameScene: SKScene {
                 }
             }
         } else if state == .gameOver {
+            // if we are in game over, a touch will put the player back on the menu screen
             if let view = self.view {
-                // Load the SKScene from 'GameScene.sks'
                 if let scene = MenuScene(fileNamed: "Menu") {
                     // Set the scale mode to scale to fit the window
                     scene.scaleMode = .aspectFill
                     
                     // Present the scene
                     view.presentScene(scene)
-                    resetVariables()
                     view.ignoresSiblingOrder = true
                     
                     view.showsFPS = false
@@ -141,12 +155,12 @@ class GameScene: SKScene {
                 }
             }
         } else if state == .win {
+            // yay, we won! touch the screen to load a random level!
             let n = Int.random(in: 1...numOfLevels)
             if let scene = GameScene.Load(level: n) {
                 scene.scaleMode = .aspectFill
                 if let view = view {
                     view.presentScene(scene)
-                    resetVariables()
                 }
             }
         }
@@ -159,12 +173,15 @@ class GameScene: SKScene {
         
         // update the position of the orange to the current location
         if self.orangeState == .ready {
+            // here we make sure the orange being readied to fire does not get stuck in the ground
             var groundHeight: CGFloat = 0
             self.enumerateChildNodes(withName: "ground") {
                 node, _ in
                 let nodeRectangle = node.calculateAccumulatedFrame()
                 groundHeight = nodeRectangle.height
             }
+            // if the player's finger moves below the ground, the orange will track their
+            // x position but will remain at ground level
             if location.y > groundHeight {
                 orange?.position = location
             } else {
@@ -193,6 +210,8 @@ class GameScene: SKScene {
             // set the orange dynamic again and apply the vector as an impulse
             orange?.physicsBody?.isDynamic = true
             orange?.physicsBody?.applyImpulse(vector)
+            
+            // remove an orange from the supply, reset our firing state
             orangeSupply -= 1
             orangeState = .none
             
@@ -201,6 +220,7 @@ class GameScene: SKScene {
         }
     }
     
+    // self-explanatory
     func updateLabel() {
         orangesLabel.text = "Oranges: \(orangeSupply)"
     }
@@ -213,6 +233,7 @@ class GameScene: SKScene {
             node, _ in
             node.run(turnRed)
         }
+        // inform the player they have lost
         let gameOverLabel = SKLabelNode(fontNamed: "Helvetica")
         gameOverLabel.text = "Game Over!"
         gameOverLabel.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
@@ -224,7 +245,7 @@ class GameScene: SKScene {
     
     func win() {
         state = .win
-        
+        // inform the player they have won
         let aWinnerIsYouLabel = SKLabelNode(fontNamed: "Helvetica")
         aWinnerIsYouLabel.text = "A Winner is You!"
         aWinnerIsYouLabel.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
@@ -235,13 +256,9 @@ class GameScene: SKScene {
         addChild(aWinnerIsYouLabel)
     }
     
-    func resetVariables() {
-        self.touchStart = .zero
-        self.state = .pause
-        self.orangeSupply = 7
-        self.orangeState = .none
-    }
-    
+    // in short: we check if the node is moving with velocity greater than or equal to 15,
+    // and that the node is within the screen bounds - we don't care about oranges flying
+    // around at x = 9000 or whatever
     func isMoving(_ node: SKNode) -> Bool {
         var moving: Bool = false
         if let v = node.physicsBody?.velocity {

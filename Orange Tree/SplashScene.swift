@@ -10,13 +10,14 @@ import SpriteKit
 import GameplayKit
 
 class SplashScene: SKScene {
-    
+    // initialize our properties
     let anima: SKSpriteNode
     enum Phase {
         case fadeIn, pause, fadeOut
     }
     var phase: Phase?
     
+    // custom init to try and solve the problem of images not loading :(
     init(visual: SKSpriteNode, size: CGSize) {
         self.anima = visual
         super.init(size: size)
@@ -50,6 +51,8 @@ class SplashScene: SKScene {
         
         // display logo
         addChild(anima)
+        
+        // only used if we're loading the texture within this class (as opposed to being passed it)
         /*
         if let logo = anima {
             addChild(logo)
@@ -61,6 +64,7 @@ class SplashScene: SKScene {
     }
     
     override func update(_ currentTime: TimeInterval) {
+        // the actual fading mechanic
         if let currentPhase = phase /*, let _ = anima?.alpha */ {
             switch currentPhase {
             case .fadeIn:
@@ -74,6 +78,7 @@ class SplashScene: SKScene {
             case .fadeOut:
                 anima.alpha -= 0.0167
                 if anima.alpha <= CGFloat(0) {
+                    // we've faded back to black, time to load the menu
                     loadMenu()
                 }
             }
@@ -82,7 +87,7 @@ class SplashScene: SKScene {
     
     func loadMenu() {
         if let view = self.view {
-            // Load the SKScene from 'GameScene.sks'
+            // Load the SKScene from 'Menu.sks'
             if let scene = MenuScene(fileNamed: "Menu") {
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
