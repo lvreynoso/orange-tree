@@ -109,6 +109,7 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // gameplay touches
         if state == .run {
             // Get the location of the touch on the touch screen
             let touch = touches.first!

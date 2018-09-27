@@ -17,21 +17,22 @@ class GameViewController: UIViewController {
         
         if let view = self.view as! SKView? {
             // preload our splash image
-            let visual = SKSpriteNode(fileNamed: "logo.png") ?? SKSpriteNode(fileNamed: "OrangeTree.png") ?? SKSpriteNode(texture: nil, color: .blue, size: CGSize(width: 2048, height: 1334))
+//            let visual = SKSpriteNode(fileNamed: "logo.png") ?? SKSpriteNode(fileNamed: "OrangeTree.png") ?? SKSpriteNode(texture: nil, color: .blue, size: CGSize(width: 2048, height: 1334))
             let size = view.frame.size
             // Load the SKScene from 'Menu.sks'
-            let scene = SplashScene(visual: visual, size: size)
-            // Set the scale mode to scale to fit the window
-            scene.scaleMode = .aspectFill
-            
-            // Present the scene
-            view.presentScene(scene)
-            
-            
-            view.ignoresSiblingOrder = true
-            
-            view.showsFPS = false
-            view.showsNodeCount = false
+            if let scene = SplashScene(fileNamed: "Splash") {
+                // Set the scale mode to scale to fit the window
+                scene.scaleMode = .aspectFill
+                
+                // Present the scene
+                view.presentScene(scene)
+                
+                
+                view.ignoresSiblingOrder = true
+                
+                view.showsFPS = false
+                view.showsNodeCount = false
+            }
         }
     }
     
