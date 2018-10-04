@@ -15,16 +15,18 @@ class SplashScene: SKScene {
         // paint it black
         self.backgroundColor = .black
         
+        // load our logo image
         let texture = SKTexture(imageNamed: "logo")
-        
         let logo = SKSpriteNode(texture: texture, color: .clear, size: self.size)
         logo.alpha = 0
         
+        // display it on screen
         addChild(logo)
         
-        let fadeSequence = SKAction.sequence([SKAction.fadeIn(withDuration: 1), SKAction.wait(forDuration: 1), SKAction.fadeOut(withDuration: 1)])
-        
+        // fade animation code
+        let fadeSequence = SKAction.sequence([SKAction.wait(forDuration: 0.2), SKAction.fadeIn(withDuration: 1), SKAction.wait(forDuration: 1), SKAction.fadeOut(withDuration: 1)])
         logo.run(fadeSequence) {
+            // after we're done fading, load the menu screen
             if let view = self.view {
                 // Load the SKScene from 'Menu.sks'
                 if let scene = MenuScene(fileNamed: "Menu") {
